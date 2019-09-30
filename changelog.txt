@@ -4,3 +4,9 @@ Date: 09. 30. 2018
 
   Changes :
     - Created the mod
+---------------------------------------------------------------------------------------------------
+Version: 0.1.2
+Date: 09. 30. 2018
+
+  Changes :
+    - added specialized drills (specific ores)
