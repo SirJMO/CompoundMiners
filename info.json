@@ -1,0 +1,11 @@
+{
+  "name": "FactorioCompoundMiners",
+  "version": "0.1.0",
+  "factorio_version": "0.17",
+  "date": "2019-09-30",
+  "title": "Factorio CompoundMiners",
+  "author": "SirJMO",
+  "homepage": "",
+  "description": "",
+  "dependencies": ["base >= 0.17.23"]
+}
