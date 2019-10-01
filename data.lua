@@ -83,6 +83,8 @@ data:extend({drillentity})
 data.raw["resource"][resource.name].category = "basic-solid" .. resource.name
 
 table.insert(data.raw["character"]["character"].mining_categories,"basic-solid" .. resource.name)
+table.insert(data.raw["mining-drill"]["burner-mining-drill"].resource_categories,"basic-solid" .. resource.name)
+table.insert(data.raw["mining-drill"]["electric-mining-drill"].resource_categories,"basic-solid" .. resource.name)
 table.insert(data.raw["mining-drill"]["compound-mining-drill-mk1"].resource_categories,"basic-solid" .. resource.name)
 table.insert(data.raw["mining-drill"]["compound-mining-drill-mk2"].resource_categories,"basic-solid" .. resource.name)
 table.insert(data.raw["mining-drill"]["compound-mining-drill-mk3"].resource_categories,"basic-solid" .. resource.name)
