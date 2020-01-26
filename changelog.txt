@@ -28,3 +28,10 @@ Date: 10. 16. 2019
 
   Changes :
     - settings
+---------------------------------------------------------------------------------------------------
+Version: 0.1.5
+Date: 01. 26. 2020
+
+  Changes :
+    - update for 0.18 basegame
+    - licence change from CC-by-NC to GNU LGPLv3
