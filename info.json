@@ -1,11 +1,13 @@
 {
-  "name": "FactorioCompoundMiners",
-  "version": "0.1.5",
-  "factorio_version": "0.17",
-  "date": "2019-10-16",
-  "title": "Factorio CompoundMiners",
-  "author": "SirJMO",
-  "homepage": "",
-  "description": "",
-  "dependencies": ["base >= 0.17.23"]
+    "name": "FactorioCompoundMiners",
+    "version": "0.2.0",
+    "factorio_version": "0.18",
+    "date": "2020-01-26",
+    "title": "Factorio CompoundMiners",
+    "author": "SirJMO",
+    "homepage": "",
+    "description": "",
+    "dependencies": [
+        "base >= 0.18.00"
+    ]
 }
