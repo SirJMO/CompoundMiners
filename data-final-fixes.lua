@@ -1,102 +1,79 @@
+local mark_mapping = {
+    ["1"] = "__base__/graphics/icons/signal/signal_1.png",
+    ["2"] = "__base__/graphics/icons/signal/signal_2.png",
+    ["3"] = "__base__/graphics/icons/signal/signal_3.png"
+}
+
 if settings.startup["specialized-miners"].value then
-	local function get_resource(name)
-	  local items = data.raw["resource"]
-	  if resources then
-		return resources[name]
-	  end
-	  return nil
-	end
+    local function fix_technology(mark, resource)
+        local tech = data.raw.technology["compound-mining-" .. mark]
+        if tech then
+            local name = "compound-mining-drill-mk" .. mark .. "-" .. resource.name
+            if data.raw.recipe[name] then
+                table.insert(tech.effects, {recipe = name, type = "unlock-recipe"})
+            end
+        end
+    end
 
-	local function modify_drill(name, resource)
-	   if resource.category == "basic-fluid" or resource.category == "water" or resource.category == "angels-fissure" or resource.category == "angels-natural-gas" then else
-	   
-	local drillitem = util.table.deepcopy(data.raw["item"]["compound-mining-drill-mk1"])
-	drillitem.name = "compound-mining-drill-mk1-" .. resource.name
-	drillitem.localised_name = "Speciallized Compound Mining Drill Mk1 " .. resource.name
-	drillitem.place_result = "compound-mining-drill-mk1-" .. resource.name
-	data:extend({drillitem})
+    local function fix_entity(mark, resource)
+        local drillentity = util.table.deepcopy(data.raw["mining-drill"]["compound-mining-drill-mk" .. mark])
+        drillentity.name = "compound-mining-drill-mk" .. mark .. "-" .. resource.name
+        drillentity.localised_name = "Speciallized Compound Mining Drill Mk" .. mark .. " " .. resource.name
+        drillentity.resource_categories = {"basic-solid" .. resource.name}
+        data:extend({drillentity})
+    end
 
-	local drillitem = util.table.deepcopy(data.raw["item"]["compound-mining-drill-mk2"])
-	drillitem.name = "compound-mining-drill-mk2-" .. resource.name
-	drillitem.localised_name = "Speciallized Compound Mining Drill Mk2 " .. resource.name
-	drillitem.place_result = "compound-mining-drill-mk2-" .. resource.name
-	data:extend({drillitem})
+    local function fix_recipe(mark, resource)
+        local drillrecipe = util.table.deepcopy(data.raw["recipe"]["compound-mining-drill-mk" .. mark])
+        drillrecipe.name = "compound-mining-drill-mk" .. mark .. "-" .. resource.name
+        drillrecipe.normal.result = drillrecipe.name
+        drillrecipe.normal.ingredients = {{"compound-mining-drill-mk" .. mark, 1}}
+        drillrecipe.expensive.result = drillrecipe.name
+        drillrecipe.expensive.ingredients = {{"compound-mining-drill-mk" .. mark, 1}}
+        drillrecipe.enabled = false
+        data:extend({drillrecipe})
+    end
 
-	local drillitem = util.table.deepcopy(data.raw["item"]["compound-mining-drill-mk3"])
-	drillitem.name = "compound-mining-drill-mk3-" .. resource.name
-	drillitem.localised_name = "Speciallized Compound Mining Drill Mk3 " .. resource.name
-	drillitem.place_result = "compound-mining-drill-mk3-" .. resource.name
-	data:extend({drillitem})
+    local function fix_icon(mark, resource)
+        local drillitem = util.table.deepcopy(data.raw["item"]["compound-mining-drill-mk" .. mark])
+        drillitem.name = "compound-mining-drill-mk" .. mark .. "-" .. resource.name
+        drillitem.localised_name = "Speciallized Compound Mining Drill Mk" .. mark .. " " .. resource.name
+        drillitem.place_result = drillitem.name
+        drillitem.icons = {
+            {icon = "__base__/graphics/icons/electric-mining-drill.png", icon_mips = 4, icon_size = 64},
+            {icon = resource.icon, icon_mips = resource.icon_mips, icon_size = resource.icon_size, scale = 0.25, shift = {8, 8}},
+            {icon = mark_mapping[mark], icon_mips = 4, icon_size = 64, scale = 0.25, shift = {-8, -8}}
+        }
+        data:extend({drillitem})
+    end
 
-	local drillrecipe = util.table.deepcopy(data.raw["recipe"]["compound-mining-drill-mk1"])
-	drillrecipe.name = "compound-mining-drill-mk1-" .. resource.name
-	drillrecipe.normal.result = "compound-mining-drill-mk1-" .. resource.name
-	drillrecipe.normal.ingredients = {{"compound-mining-drill-mk1",1}}
-	drillrecipe.expensive.result = "compound-mining-drill-mk1-" .. resource.name
-	drillrecipe.expensive.ingredients = {{"compound-mining-drill-mk1",1}}
-	data:extend({drillrecipe})
+    local function modify_drill(resource)
+        if resource.category == "basic-fluid" or resource.category == "water" or resource.category == "angels-fissure" or resource.category == "angels-natural-gas" then
+            return
+        else
+            local drillcat = util.table.deepcopy(data.raw["resource-category"]["basic-solid"])
+            drillcat.name = "basic-solid" .. resource.name
+            data:extend({drillcat})
+            data.raw["resource"][resource.name].category = "basic-solid" .. resource.name
 
-	local drillrecipe = util.table.deepcopy(data.raw["recipe"]["compound-mining-drill-mk2"])
-	drillrecipe.name = "compound-mining-drill-mk2-" .. resource.name
-	drillrecipe.normal.result = "compound-mining-drill-mk2-" .. resource.name
-	drillrecipe.normal.ingredients = {{"compound-mining-drill-mk2",1}}
-	drillrecipe.expensive.result = "compound-mining-drill-mk2-" .. resource.name
-	drillrecipe.expensive.ingredients = {{"compound-mining-drill-mk2",1}}
-	data:extend({drillrecipe})
+            for _, mark in pairs({"1", "2", "3"}) do
+                fix_icon(mark, resource)
+                fix_recipe(mark, resource)
+                fix_entity(mark, resource)
+                fix_technology(mark, resource)
+                table.insert(data.raw["mining-drill"]["compound-mining-drill-mk" .. mark].resource_categories, "basic-solid" .. resource.name)
+            end
 
-	local drillrecipe = util.table.deepcopy(data.raw["recipe"]["compound-mining-drill-mk3"])
-	drillrecipe.name = "compound-mining-drill-mk3-" .. resource.name
-	drillrecipe.normal.result = "compound-mining-drill-mk3-" .. resource.name
-	drillrecipe.normal.ingredients = {{"compound-mining-drill-mk3",1}}
-	drillrecipe.expensive.result = "compound-mining-drill-mk3-" .. resource.name
-	drillrecipe.expensive.ingredients = {{"compound-mining-drill-mk3",1}}
-	data:extend({drillrecipe})
-		
-	local drillcat = util.table.deepcopy(data.raw["resource-category"]["basic-solid"])
-	drillcat.name = "basic-solid" .. resource.name
-	data:extend({drillcat})
-		
-	local drillentity = util.table.deepcopy(data.raw["mining-drill"]["compound-mining-drill-mk1"])
-	drillentity.name = "compound-mining-drill-mk1-" .. resource.name
-	drillentity.localised_name = "Speciallized Compound Mining Drill Mk1 " .. resource.name
-	drillentity.resource_categories = {"basic-solid" .. resource.name}
+            table.insert(data.raw["character"]["character"].mining_categories, "basic-solid" .. resource.name)
+            table.insert(data.raw["mining-drill"]["burner-mining-drill"].resource_categories, "basic-solid" .. resource.name)
+            table.insert(data.raw["mining-drill"]["electric-mining-drill"].resource_categories, "basic-solid" .. resource.name)
+        end
+    end
 
-	data:extend({drillentity})	
-
-	local drillentity = util.table.deepcopy(data.raw["mining-drill"]["compound-mining-drill-mk2"])
-	drillentity.name = "compound-mining-drill-mk2-" .. resource.name
-	drillentity.localised_name = "Speciallized Compound Mining Drill Mk2 " .. resource.name
-	drillentity.resource_categories = {"basic-solid" .. resource.name}
-
-	data:extend({drillentity})
-		
-	local drillentity = util.table.deepcopy(data.raw["mining-drill"]["compound-mining-drill-mk3"])
-	drillentity.name = "compound-mining-drill-mk3-" .. resource.name
-	drillentity.localised_name = "Speciallized Compound Mining Drill Mk3 " .. resource.name
-	drillentity.resource_categories = {"basic-solid" .. resource.name}
-
-	data:extend({drillentity})
-		  
-	data.raw["resource"][resource.name].category = "basic-solid" .. resource.name
-
-	table.insert(data.raw["character"]["character"].mining_categories,"basic-solid" .. resource.name)
-	table.insert(data.raw["mining-drill"]["burner-mining-drill"].resource_categories,"basic-solid" .. resource.name)
-	table.insert(data.raw["mining-drill"]["electric-mining-drill"].resource_categories,"basic-solid" .. resource.name)
-	table.insert(data.raw["mining-drill"]["compound-mining-drill-mk1"].resource_categories,"basic-solid" .. resource.name)
-	table.insert(data.raw["mining-drill"]["compound-mining-drill-mk2"].resource_categories,"basic-solid" .. resource.name)
-	table.insert(data.raw["mining-drill"]["compound-mining-drill-mk3"].resource_categories,"basic-solid" .. resource.name)
-	   end
-	   end
-	   
-	local function get_zero(name, resource)
-	  local existing_item = get_resource(name)
-	  return modify_drill(name, resource) 
-	end
-
-	local function process_resource(resource)
-	  for name,resource in pairs(resource) do
-	  local resource_item = get_zero(resource_name, resource)
-	end 
-	end
-	process_resource(data.raw["resource"])
+    local function process_resource()
+        for _, resource in pairs(data.raw["resource"]) do
+            modify_drill(resource)
+        end
+    end
+    process_resource()
 end
