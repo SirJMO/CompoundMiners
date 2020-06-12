@@ -82,6 +82,64 @@ data:extend(
                 },
                 result = "compound-mining-drill-mk3"
             }
+        },
+        {
+            type = "recipe",
+            name = "compound-mining-drill-mk4",
+            enabled = false,
+            normal = {
+                enabled = false,
+                energy_required = 2,
+                ingredients = {
+                    {"compound-mining-drill-mk3", 9},
+                    {"steel-plate", 12},
+                    {"electronic-circuit", 12},
+                    {"advanced-circuit", 12},
+                    {"processing-unit", 12}
+                },
+                result = "compound-mining-drill-mk4"
+            },
+            expensive = {
+                enabled = false,
+                energy_required = 2,
+                ingredients = {
+                    {"compound-mining-drill-mk3", 18},
+                    {"steel-plate", 24},
+                    {"electronic-circuit", 24},
+                    {"advanced-circuit", 24},
+                    {"processing-unit", 24}
+                },
+                result = "compound-mining-drill-mk4"
+            }
+        },
+        {
+            type = "recipe",
+            name = "compound-mining-drill-mk5",
+            enabled = false,
+            normal = {
+                enabled = false,
+                energy_required = 2,
+                ingredients = {
+                    {"compound-mining-drill-mk4", 9},
+                    {"steel-plate", 12},
+                    {"electronic-circuit", 12},
+                    {"advanced-circuit", 12},
+                    {"processing-unit", 12}
+                },
+                result = "compound-mining-drill-mk5"
+            },
+            expensive = {
+                enabled = false,
+                energy_required = 2,
+                ingredients = {
+                    {"compound-mining-drill-mk4", 18},
+                    {"steel-plate", 24},
+                    {"electronic-circuit", 24},
+                    {"advanced-circuit", 24},
+                    {"processing-unit", 24}
+                },
+                result = "compound-mining-drill-mk5"
+            }
         }
     }
 )

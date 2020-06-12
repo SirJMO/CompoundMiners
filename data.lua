@@ -1,4 +1,5 @@
 require("prototypes.item")
+require("prototypes.item-group")
 require("prototypes.recipe")
 require("prototypes.entity")
 require("prototypes.technology")

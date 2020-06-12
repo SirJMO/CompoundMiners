@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.1
+Date: 06. 12. 2020
+
+  Changes :
+    - Adapted the new miners
+    - Code cleanup with lots of help by Billbo99
+    - Added the mk5 and mk4
+    - Changed the modtitle from FactorioCompoundMiners to CompoundMiners
+    - Added seperate tab for the compound miners
+---------------------------------------------------------------------------------------------------
 Version: 0.2.0
 Date: 01. 26. 2020
 

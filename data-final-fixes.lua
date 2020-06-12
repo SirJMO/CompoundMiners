@@ -1,7 +1,9 @@
 local mark_mapping = {
     ["1"] = "__base__/graphics/icons/signal/signal_1.png",
     ["2"] = "__base__/graphics/icons/signal/signal_2.png",
-    ["3"] = "__base__/graphics/icons/signal/signal_3.png"
+    ["3"] = "__base__/graphics/icons/signal/signal_3.png",
+    ["4"] = "__base__/graphics/icons/signal/signal_4.png",
+    ["5"] = "__base__/graphics/icons/signal/signal_5.png"
 }
 
 if settings.startup["specialized-miners"].value then
@@ -56,7 +58,7 @@ if settings.startup["specialized-miners"].value then
             data:extend({drillcat})
             data.raw["resource"][resource.name].category = "basic-solid" .. resource.name
 
-            for _, mark in pairs({"1", "2", "3"}) do
+            for _, mark in pairs({"1", "2", "3", "4", "5"}) do
                 fix_icon(mark, resource)
                 fix_recipe(mark, resource)
                 fix_entity(mark, resource)
