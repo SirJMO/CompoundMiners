@@ -41,11 +41,19 @@ if settings.startup["specialized-miners"].value then
         drillitem.name = "compound-mining-drill-mk" .. mark .. "-" .. resource.name
         drillitem.localised_name = "Speciallized Compound Mining Drill Mk" .. mark .. " " .. resource.name
         drillitem.place_result = drillitem.name
-        drillitem.icons = {
-            {icon = "__base__/graphics/icons/electric-mining-drill.png", icon_mips = 4, icon_size = 64},
-            {icon = resource.icon, icon_mips = resource.icon_mips, icon_size = resource.icon_size, scale = 0.25, shift = {8, 8}},
-            {icon = mark_mapping[mark], icon_mips = 4, icon_size = 64, scale = 0.25, shift = {-8, -8}}
-        }
+		if(resource.icon)
+		then
+			drillitem.icons = {
+				{icon = "__base__/graphics/icons/electric-mining-drill.png", icon_mips = 4, icon_size = 64},
+				{icon = resource.icon, icon_mips = resource.icon_mips, icon_size = resource.icon_size, scale = 0.25, shift = {8, 8}},
+				{icon = mark_mapping[mark], icon_mips = 4, icon_size = 64, scale = 0.25, shift = {-8, -8}}
+			}
+		else
+			drillitem.icons = {
+				{icon = "__base__/graphics/icons/electric-mining-drill.png", icon_mips = 4, icon_size = 64},
+				{icon = mark_mapping[mark], icon_mips = 4, icon_size = 64, scale = 0.25, shift = {-8, -8}}
+			}
+		end
         data:extend({drillitem})
     end
 
