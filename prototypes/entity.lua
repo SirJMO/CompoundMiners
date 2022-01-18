@@ -56,6 +56,7 @@ local function make_drill(args)
     drill.collision_box = args.collision_box
     drill.selection_box = args.selection_box
     drill.input_fluid_box.pipe_connections = args.pipe_connections
+	drill.input_fluid_box.base_area = args.scale
 
     drill.graphics_set = parse_graphics(drill.graphics_set, args.scale)
     drill.wet_mining_graphics_set = parse_graphics(drill.wet_mining_graphics_set, args.scale)
