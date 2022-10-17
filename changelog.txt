@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.4
+Date: 17. 10. 2022
+
+  Changes :
+    - added "oil" to the list of fluid resources (k2 compatability)
+      miners are not made to drill "basic-fluid" or in this case "oil"
+---------------------------------------------------------------------------------------------------
 Version: 1.1.3
 Date: 18. 01. 2022
 

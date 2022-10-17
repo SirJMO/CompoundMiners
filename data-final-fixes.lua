@@ -58,7 +58,7 @@ if settings.startup["specialized-miners"].value then
     end
 
     local function modify_drill(resource)
-        if resource.category == "basic-fluid" or resource.category == "water" or resource.category == "angels-fissure" or resource.category == "angels-natural-gas" then
+        if resource.category == "basic-fluid" or resource.category == "water" or resource.category == "angels-fissure" or resource.category == "angels-natural-gas" or resource.category == "oil" then
             return
         else
             local drillcat = util.table.deepcopy(data.raw["resource-category"]["basic-solid"])
