@@ -1,4 +1,20 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.2.1
+Date: 25. 10. 2024
+
+  Fix :
+    - research requirement electric mining drill added
+---------------------------------------------------------------------------------------------------
+Version: 1.2.0
+Date: 25. 10. 2024
+
+  Fix :
+    - made it somewhat work with 2.0 (requires more testing)
+  Changes :
+    - scale values and hitbox changed
+    - research requirements tweaked
+    - research costs tweaked
+---------------------------------------------------------------------------------------------------
 Version: 1.1.4
 Date: 17. 10. 2022
 

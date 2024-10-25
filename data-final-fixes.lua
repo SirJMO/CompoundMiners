@@ -28,10 +28,8 @@ if settings.startup["specialized-miners"].value then
     local function fix_recipe(mark, resource)
         local drillrecipe = util.table.deepcopy(data.raw["recipe"]["compound-mining-drill-mk" .. mark])
         drillrecipe.name = "compound-mining-drill-mk" .. mark .. "-" .. resource.name
-        drillrecipe.normal.result = drillrecipe.name
-        drillrecipe.normal.ingredients = {{"compound-mining-drill-mk" .. mark, 1}}
-        drillrecipe.expensive.result = drillrecipe.name
-        drillrecipe.expensive.ingredients = {{"compound-mining-drill-mk" .. mark, 1}}
+        drillrecipe.results = {{type="item", name=drillrecipe.name, amount=1}}
+        drillrecipe.ingredients = {{type = "item", name = "compound-mining-drill-mk" .. mark, amount = 1}}
         drillrecipe.enabled = false
         data:extend({drillrecipe})
     end

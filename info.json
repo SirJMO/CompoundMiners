@@ -1,13 +1,13 @@
 {
     "name": "FactorioCompoundMiners",
-    "version": "1.1.4",
-    "factorio_version": "1.1",
-    "date": "2022-10-17",
+    "version": "1.2.1",
+    "factorio_version": "2.0",
+    "date": "2024-10-25",
     "title": "CompoundMiners",
     "author": "SirJMO",
     "homepage": "",
     "description": "Are miners too small? mash 3x3 together add some bits and tada! compound miners",
     "dependencies": [
-        "base >= 1.1.0"
+        "base >= 2.0.10"
     ]
 }

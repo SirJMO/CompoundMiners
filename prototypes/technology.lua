@@ -5,9 +5,12 @@ local tech1 = {
     },
     name = "compound-mining-1",
     order = "c-a-a",
+    prerequisites = {
+        "electric-mining-drill"
+    }
     type = "technology",
     unit = {
-        count = "250",
+        count = 250,
         ingredients = {
             {"automation-science-pack", 1}
         },
@@ -23,12 +26,12 @@ local tech2 = {
     name = "compound-mining-2",
     order = "c-a-a",
     prerequisites = {
-        "advanced-electronics",
+        "advanced-circuit",
         "compound-mining-1"
     },
     type = "technology",
     unit = {
-        count = "250",
+        count = 250,
         ingredients = {
             {"automation-science-pack", 1},
             {"logistic-science-pack", 1}
@@ -45,12 +48,12 @@ local tech3 = {
     name = "compound-mining-3",
     order = "c-a-a",
     prerequisites = {
-        "advanced-electronics-2",
+        "processing-unit",
         "compound-mining-2"
     },
     type = "technology",
     unit = {
-        count = "1000",
+        count = 500,
         ingredients = {
             {"automation-science-pack", 1},
             {"logistic-science-pack", 1},
@@ -67,18 +70,17 @@ local tech4 = {
     name = "compound-mining-4",
     order = "c-a-a",
     prerequisites = {
-        "compound-mining-3", "space-science-pack"
+        "compound-mining-3"
     },
     type = "technology",
     unit = {
-        count = "1000",
+        count = 1000,
         ingredients = {
             {"automation-science-pack", 1},
 			{"logistic-science-pack", 1},
 			{"chemical-science-pack", 1},
 			{"production-science-pack", 1},
-			{"utility-science-pack", 1},
-			{"space-science-pack", 1}
+			{"utility-science-pack", 1}
         },
         time = 60
     }
@@ -91,11 +93,11 @@ local tech5 = {
     name = "compound-mining-5",
     order = "c-a-a",
     prerequisites = {
-        "compound-mining-4"
+        "compound-mining-4", "space-science-pack"
     },
     type = "technology",
     unit = {
-        count = "1000000",
+        count = 1000000,
         ingredients = {
             {"automation-science-pack", 1},
 			{"logistic-science-pack", 1},
