@@ -7,7 +7,7 @@ local tech1 = {
     order = "c-a-a",
     prerequisites = {
         "electric-mining-drill"
-    }
+    },
     type = "technology",
     unit = {
         count = 250,
